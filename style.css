@@ -1,14 +1,33 @@
 .App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  .container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 0.2fr 0.5fr 1fr;
-  }
-  .div2{
-    justify-content:center;
-    align-items:center;
-    display:flex;
-  }
+  font-family: sans-serif;
+  text-align: center;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 0.2fr 0.5fr 1fr;
+}
+.div2 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.containerStyle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gridWrapperStyle {
+  width: 18em;
+  margin: 0 auto;
+  border: 1px solid #000;
+  padding: 10px;
+}
+.titleStyle,
+.gridStyle {
+  text-align: center;
+}
+.buttonStyle {
+  text-align: center;
+  margin: 10px;
+}
