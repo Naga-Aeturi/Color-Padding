@@ -31,7 +31,6 @@ export default function App() {
     );
   }
   function handleMouseEnter(event) {
-    // console.log(event.target);
     event.target.style.backgroundColor = circleColor;
   }
   function handleUndo() {
@@ -100,16 +99,10 @@ const Square = ({
   onSquareMouseEnter,
   onSquareMouseLeave
 }) => {
-  const squareStyle = {
-    width: "1em",
-    height: "1em",
-    border: "1px solid #000",
-    backgroundColor: color
-  };
-
   return (
     <div
-      style={squareStyle}
+    className="squareStyle"
+      style={{backgroundColor: color}}
       onClick={onSquareClick}
       onMouseEnter={onSquareMouseEnter}
       onMouseLeave={onSquareMouseLeave}
