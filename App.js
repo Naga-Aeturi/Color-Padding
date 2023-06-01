@@ -1,5 +1,5 @@
 import "./styles.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CirclePicker } from "react-color";
 const undoArray = [];
 const redoArray = [];
@@ -10,26 +10,6 @@ export default function App() {
       Array(256).fill("#FFFFFF")
   );
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem("SavedColors")) {
-  //     localStorage.setItem(
-  //       "SavedColors",
-  //       JSON.stringify(Array(256).fill("#FFFFFF"))
-  //     );
-  //   }
-  // });
-  const containerStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center"
-  };
-
-  const gridWrapperStyle = {
-    width: "18em",
-    margin: "0 auto",
-    border: "1px solid #000",
-    padding: "10px"
-  };
   function handleColor(colorName) {
     let hexCode = colorName.hex;
     setCircleColor(hexCode);
@@ -73,13 +53,13 @@ export default function App() {
   return (
     <div className="container">
       <div>
-        <h1 style={{ textAlign: "center" }}>Color-Padding</h1>
+        <h1 className="titleStyle">Color-Padding</h1>
       </div>
       <div className="div2">
-        <CirclePicker style={{ textAlign: "center" }} onChange={handleColor} />
+        <CirclePicker className="gridStyle" onChange={handleColor} />
       </div>
-      <div style={gridWrapperStyle}>
-        <div style={containerStyle}>
+      <div className="gridWrapperStyle">
+        <div className="containerStyle">
           <Container
             squareColors={squareColors}
             onSquareClick={handleClick}
@@ -87,7 +67,7 @@ export default function App() {
           />
         </div>
       </div>
-      <div style={{ textAlign: "center", margin: "10px" }}>
+      <div className="buttonStyle">
         <button onClick={handleReset}>Reset</button>
         <button onClick={handleUndo}>Undo</button>
         <button onClick={handleRedo}>Redo</button>
