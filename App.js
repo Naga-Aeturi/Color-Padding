@@ -1,8 +1,8 @@
 import "./styles.css";
 import React, { useState } from "react";
 import { CirclePicker } from "react-color";
-const undoArray = [];
-const redoArray = [];
+let undoArray = [];
+let redoArray = [];
 export default function App() {
   const [circleColor, setCircleColor] = useState("white");
   const [squareColors, setSquareColors] = useState(
@@ -16,6 +16,9 @@ export default function App() {
   }
 
   function handleClick(index) {
+    if (redoArray != []) {
+      redoArray = [];
+    }
     let newSquareColors = [...squareColors];
     undoArray.push(squareColors);
     newSquareColors[index] = circleColor;
@@ -30,9 +33,11 @@ export default function App() {
       JSON.stringify(Array(256).fill("#FFFFFF"))
     );
   }
+
   function handleMouseEnter(event) {
     event.target.style.backgroundColor = circleColor;
   }
+
   function handleUndo() {
     if (undoArray.length > 0) {
       redoArray.push(squareColors);
@@ -41,6 +46,7 @@ export default function App() {
       localStorage.setItem("SavedColors", JSON.stringify(past));
     }
   }
+
   function handleRedo() {
     if (redoArray.length > 0) {
       undoArray.push(squareColors);
@@ -97,12 +103,12 @@ const Square = ({
   color,
   onSquareClick,
   onSquareMouseEnter,
-  onSquareMouseLeave
+  onSquareMouseLeave,
 }) => {
   return (
     <div
-    className="squareStyle"
-      style={{backgroundColor: color}}
+      className="squareStyle"
+      style={{ backgroundColor: color }}
       onClick={onSquareClick}
       onMouseEnter={onSquareMouseEnter}
       onMouseLeave={onSquareMouseLeave}
